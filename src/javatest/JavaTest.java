@@ -80,7 +80,7 @@ public class JavaTest {
                     //Kiểm tra nếu số lượng sản phẩm lớn hơn hoặc bằng 3
                     if (number >= 3) {
                         if (obj.checkLimit(today) == false && MAX_OF_DAY >= product.getGiaSanPham()) {
-                            
+
                             randomNumber = random.nextInt(10);
                         }
                         if (obj.checkLimit(today) == true && MAX_OF_DAY >= product.getGiaSanPham()) {
@@ -116,22 +116,24 @@ public class JavaTest {
                         System.out.println("Bạn có muốn thực hiện thanh toán");
                         System.out.println("OK-Tiếp tục || Exit-Thoát");
                         input = scanner.nextLine();
+                        while (!input.equals("OK") && !input.equals("Exit")) {
+                            System.out.println("Bạn có muốn thực hiện thanh toán");
+                            System.out.println("OK-Tiếp tục || Exit-Thoát");
+                            input = scanner.nextLine();
+                        }
                         yourMoney = money;
-                        do {
-                            if (input.equals("OK")) {
-                                System.out.println("Sô tiền nhận vào : " + yourMoney);
-                                System.out.println("Số tiền cần thanh toán : " + sum);
-                                System.out.println("Số tiền thối : " + (yourMoney - sum));
-                                if (randomNumber == 1 && tmp >= 3 && obj.checkLimit(today) == false && MAX_OF_DAY >= product.getGiaSanPham()) {
-                                    MAX_OF_DAY = MAX_OF_DAY - product.getGiaSanPham();
-                                    obj.writeLogs(today);
-                                }
+                        if (input.equals("OK")) {
+                            System.out.println("Sô tiền nhận vào : " + yourMoney);
+                            System.out.println("Số tiền cần thanh toán : " + sum);
+                            System.out.println("Số tiền thối : " + (yourMoney - sum));
+                            if (randomNumber == 1 && tmp >= 3 && obj.checkLimit(today) == false && MAX_OF_DAY >= product.getGiaSanPham()) {
+                                MAX_OF_DAY = MAX_OF_DAY - product.getGiaSanPham();
+                                obj.writeLogs(today);
                             }
-                            if (input.equals("Exit")) {
-                                System.out.println("Số tiền được hoàn lại : " + yourMoney);
-                            }
-
-                        } while (input.equals("OK") && input.equals("Exit"));
+                        }
+                        if (input.equals("Exit")) {
+                            System.out.println("Số tiền được hoàn lại : " + yourMoney);
+                        }
                     }
                 }
             }
