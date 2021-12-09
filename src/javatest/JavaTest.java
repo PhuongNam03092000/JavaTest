@@ -87,7 +87,7 @@ public class JavaTest {
                             randomNumber = random.nextInt(2);
                         }
                         //Nếu randomNumber == 1 thì thực hiện khuyến mãi
-                        if (randomNumber == 0) {
+                        if (randomNumber == 1) {
                             sum = product.getGiaSanPham() * number;
                             number = number + 1;
                         } else {
